@@ -15,14 +15,16 @@ public class DataManager {
 			
 		}
 	  	private Connection connection;
-	  	
+	
+	  //hàm tạo kết nối
 	    public Connection getConnect() throws ClassNotFoundException, SQLException {
 		Class.forName(DatabaseInfo.driverName);
 		connection = DriverManager.getConnection(DatabaseInfo.dbURL);
 		//System.out.println("CONNECTTED!");
 		return connection;
 	    }
-	    
+	
+	   //hàm lấy dữ liệu từ table trong database
 	    public Vector<Vector<String>> getHistory() throws SQLException, ClassNotFoundException{
 	    	Vector<Vector<String>> data = new Vector<Vector<String>>();
 	    	connection = getConnect();
@@ -49,6 +51,8 @@ public class DataManager {
 	    	connection.close();
 	    	return data;
 	    }
+	
+	  //hàm đưa dữ liệu từ ứng dụng vào database
 	    public void insertData(int STT, String Input, String Output, String time) throws ClassNotFoundException, SQLException {
 			connection = getConnect();
 			
@@ -58,6 +62,8 @@ public class DataManager {
 			connection.close();
 			
 		}
+	
+	   //hàm kiểm tra định dạng input
 	    public boolean checkInput(String Input) {
 	    	long temp;
 	    	try {
@@ -69,11 +75,15 @@ public class DataManager {
 			}
 	    		return true;
 	    }
+	 
+	   //hàm trả về thời gian của các lần sử dụng  
 	    public String getTime() {
 	    	Date d = new Date();
 			Timestamp ts = new Timestamp(d.getTime());
 			return ts+"";
 	    }
+	
+	    //hàm lấy số thứ tự nhập của các lần sử dụng
 	    public int setSTT() throws ClassNotFoundException, SQLException {
 	    	connection = getConnect();
 	    	int STT = 0;
