@@ -27,6 +27,12 @@ public class GUI extends JFrame {
 	        menuBar = new JMenuBar();
 
 	        aboutMenu = new JMenu("About");
+	        aboutMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	            	event.btnAboutMouseClicked(evt);
+	            }
+	        });
+	        
 	        historyMenu = new JMenu("History");
 	        historyMenu.addMouseListener(new java.awt.event.MouseAdapter() {
 	            public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -38,8 +44,15 @@ public class GUI extends JFrame {
 					}
 	            }
 	        });
+	        
 	        helpMenu = new JMenu("Help");
-
+	        helpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	            	event.btnHelpMouseClicked(evt);
+	            }
+	        });
+	        
+	        contentPane.setBackground(Color.CYAN);
 	        menuBar.add(aboutMenu);
 	        menuBar.add(historyMenu);
 	        menuBar.add(helpMenu);
