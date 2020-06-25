@@ -19,11 +19,13 @@ public class GUI extends JFrame {
 	    EventHandling event = new EventHandling(this);
 	    public GUI() {
 	        this.setTitle("Time Formatter");
-	        this.setSize(680,600);
+	        this.setSize(670,650);
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        contentPane = new JPanel();
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
+			contentPane.setBackground(Color.lightGray);
+			
 	        menuBar = new JMenuBar();
 
 	        aboutMenu = new JMenu("About");
@@ -52,20 +54,27 @@ public class GUI extends JFrame {
 	            }
 	        });
 	        
-	        contentPane.setBackground(Color.CYAN);
 	        menuBar.add(aboutMenu);
 	        menuBar.add(historyMenu);
 	        menuBar.add(helpMenu);
 	        setJMenuBar(menuBar);
 
 	        lbTitle = new JLabel("Time Formatter");
+	        lbTitle.setBackground(Color.GRAY);
+	        lbTitle.setForeground(new Color(120, 205, 100));
+	        lbTitle.setHorizontalAlignment(SwingConstants.CENTER);
 	        lbTitle.setFont(new Font("Serif", Font.BOLD, 30));
-	        lbTitle.setBounds(250, 10, 300, 50);
+	        lbTitle.setOpaque(true);
+	        lbTitle.setBounds(0, 10, 670, 50);
 	        contentPane.add(lbTitle);
 
 	        lbInput = new JLabel("Input");
+	        lbInput.setBackground(new Color(120, 205, 100));
+	        lbInput.setForeground(Color.GRAY);
 	        lbInput.setFont(new Font("Serif", Font.BOLD, 30));
-	        lbInput.setBounds(100, 100, 400, 70);
+	        lbInput.setOpaque(true);
+	        lbInput.setHorizontalAlignment(SwingConstants.CENTER);
+	        lbInput.setBounds(100, 130, 90, 40);
 	        contentPane.add(lbInput);
 	        
 	        tfNhap = new JTextField();
@@ -79,8 +88,12 @@ public class GUI extends JFrame {
 	        contentPane.add(lbS);
 
 	        lbOutput = new JLabel("Output");
+	        lbOutput.setBackground(new Color(120, 205, 100));
+	        lbOutput.setForeground(Color.GRAY);
 	        lbOutput.setFont(new Font("Serif", Font.BOLD, 30));
-	        lbOutput.setBounds(100, 270, 400, 50);
+	        lbOutput.setOpaque(true);
+	        lbOutput.setBounds(100, 270, 110, 40);
+	        lbOutput.setHorizontalAlignment(SwingConstants.CENTER);
 	        contentPane.add(lbOutput);
 
 	        tfResult = new JTextArea();
@@ -94,6 +107,7 @@ public class GUI extends JFrame {
 	        btResult = new JButton("Result");
 	        
 	        btResult.setBounds(70, 430, 200, 50);
+	        btResult.setBackground(Color.CYAN);
 	        btResult.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -109,6 +123,7 @@ public class GUI extends JFrame {
 
 	        btReset = new JButton("Reset");
 	        btReset.setBounds(370, 430, 200, 50);
+	        btReset.setBackground(Color.CYAN);
 	        btReset.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
