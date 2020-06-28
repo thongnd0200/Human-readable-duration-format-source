@@ -50,7 +50,6 @@ public class TimeFormatter {
 	        if (count == 1)
 	            return result; 
 		    
-	        return result.substring(0, result.lastIndexOf(",")) + " and " 
-	        + result.substring(result.lastIndexOf(",")+2,result.length());
+	        return result.substring(0, result.lastIndexOf(",")) + " and " + result.substring(result.lastIndexOf(",")+2,result.length());
 	    }
 }
