@@ -10,6 +10,7 @@ public class aboutForm extends JFrame {
 	JPanel contentPane;
 	JTextArea text;
 	GUI gui;
+	
 	public aboutForm(GUI gui) {
 		this.gui = gui;
 		this.setTitle("About");
