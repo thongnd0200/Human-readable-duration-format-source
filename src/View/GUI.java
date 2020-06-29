@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 
 public class GUI extends JFrame {
+	
 	    JMenuBar menuBar;
 	    JMenu aboutMenu, historyMenu, helpMenu;
 	    JScrollPane scrollPane;
@@ -17,14 +18,17 @@ public class GUI extends JFrame {
 	    JButton btResult, btReset;
 	    JPanel contentPane;
 	    EventHandling event = new EventHandling(this);
+	
 	    public GUI() {
+		    
 	        this.setTitle("Time Formatter");
 	        this.setSize(670,650);
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    
 	        contentPane = new JPanel();
-			setContentPane(contentPane);
-			contentPane.setLayout(null);
-			contentPane.setBackground(Color.lightGray);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.setBackground(Color.lightGray);
 			
 	        menuBar = new JMenuBar();
 
@@ -35,15 +39,14 @@ public class GUI extends JFrame {
 	            }
 	        });
 	        
-	        historyMenu = new JMenu("History");
+	        historyMenu = new JMenu("History");    
 	        historyMenu.addMouseListener(new java.awt.event.MouseAdapter() {
 	            public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            	try {
-						event.btnlHistoryMouseClicked(evt);
-					} catch (ClassNotFoundException | SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				event.btnlHistoryMouseClicked(evt);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 	            }
 	        });
 	        
@@ -109,27 +112,28 @@ public class GUI extends JFrame {
 	        btResult.setBounds(70, 430, 200, 50);
 	        btResult.setBackground(Color.CYAN);
 	        btResult.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-				    try {
-						event.btnResultActionPerformed(arg0);
-					} catch (ClassNotFoundException | SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			    });
+			
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+				event.btnResultActionPerformed(arg0);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+		     }
+		});  
 	        contentPane.add(btResult);
 
 	        btReset = new JButton("Reset");
 	        btReset.setBounds(370, 430, 200, 50);
 	        btReset.setBackground(Color.CYAN);
 	        btReset.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-				    event.btnResetActionPerformed(arg0);
-				}
-			    });
+			
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			event.btnResetActionPerformed(arg0);
+		     }
+		});
 	        contentPane.add(btReset);
 	        
 	        this.setLocationRelativeTo(null);
