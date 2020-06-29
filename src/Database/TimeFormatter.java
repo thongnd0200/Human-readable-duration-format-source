@@ -16,7 +16,7 @@ public class TimeFormatter {
 		    
 	        times[0] = seconds/YtoS;// years
 	        seconds %= YtoS;
-		    
+   
 	        times[1] = seconds/DtoS;// days
 	        seconds %= DtoS;
 		    
@@ -45,6 +45,7 @@ public class TimeFormatter {
 	            count++;	
 	            result += ", ";
 	        }
+		    
 	        result = result.substring(0, result.lastIndexOf(","));
 		    
 	        if (count == 1)
