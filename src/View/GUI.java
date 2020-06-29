@@ -111,29 +111,27 @@ public class GUI extends JFrame {
 	        
 	        btResult.setBounds(70, 430, 200, 50);
 	        btResult.setBackground(Color.CYAN);
-	        btResult.addActionListener(new ActionListener() {
-			
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			try {
-				event.btnResultActionPerformed(arg0);
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-		     }
+	        btResult.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					event.btnResultActionPerformed(arg0);
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+		     	}
 		});  
 	        contentPane.add(btResult);
 
 	        btReset = new JButton("Reset");
 	        btReset.setBounds(370, 430, 200, 50);
 	        btReset.setBackground(Color.CYAN);
-	        btReset.addActionListener(new ActionListener() {
-			
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			event.btnResetActionPerformed(arg0);
-		     }
-		});
+	        btReset.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				event.btnResetActionPerformed(arg0);
+		    	}
+		});	
 	        contentPane.add(btReset);
 	        
 	        this.setLocationRelativeTo(null);
