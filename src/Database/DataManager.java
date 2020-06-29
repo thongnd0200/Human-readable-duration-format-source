@@ -11,19 +11,21 @@ import java.util.Date;
 import java.util.Vector;
 
 public class DataManager {
-		public DataManager() {
-			
+	
+	    public DataManager() {	
 		}
-	  	private Connection connection;
+	    private Connection connection;
 	  	
 	    public Connection getConnect() throws ClassNotFoundException, SQLException {
+		    
 		Class.forName(DatabaseInfo.driverName);
 		connection = DriverManager.getConnection(DatabaseInfo.dbURL);
-		//System.out.println("CONNECTTED!");
 		return connection;
+		    
 	    }
 	    
 	    public Vector<Vector<String>> getHistory() throws SQLException, ClassNotFoundException{
+		    
 	    	Vector<Vector<String>> data = new Vector<Vector<String>>();
 	    	connection = getConnect();
 	    	
@@ -46,9 +48,11 @@ public class DataManager {
 	    		data.add(temp);
 
 	    	}
+		    
 	    	connection.close();
 	    	return data;
 	    }
+	
 	    public void insertData(int STT, String Input, String Output, String time) throws ClassNotFoundException, SQLException {
 			connection = getConnect();
 			
@@ -58,32 +62,42 @@ public class DataManager {
 			connection.close();
 			
 		}
+	
 	    public boolean checkInput(String Input) {
+		    
 	    	long temp;
+		    
 	    	try {
-				temp = Long.parseLong(Input);
-				if( temp < 0) return false;
-			} catch (Exception e) {
-				return false;
-				// TODO: handle exception
-			}
-	    		return true;
+		        temp = Long.parseLong(Input);
+			if( temp < 0) return false;
+		} catch (Exception e) {
+			return false;
+		     }
+		    
+	    	return true;
 	    }
+	
 	    public String getTime() {
+		    
 	    	Date d = new Date();
-			Timestamp ts = new Timestamp(d.getTime());
-			return ts+"";
+		Timestamp ts = new Timestamp(d.getTime());
+		return ts+"";
+		    
 	    }
+	
 	    public int setSTT() throws ClassNotFoundException, SQLException {
+		    
 	    	connection = getConnect();
 	    	int STT = 0;
 	    	Statement stm = connection.createStatement();
-			ResultSet rsSTT = stm.executeQuery("SELECT STT FROM IOHISTORY");
-			while (rsSTT.next()) {
-				STT = rsSTT.getInt("STT");
-			}
-			connection.close();
-			++STT;
-			return STT;
+		ResultSet rsSTT = stm.executeQuery("SELECT STT FROM IOHISTORY");
+		    
+		while (rsSTT.next()) {
+			STT = rsSTT.getInt("STT");
+		}
+		    
+		connection.close();
+		++STT;
+		return STT;
 	    }
 }
